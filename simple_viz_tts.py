@@ -12,8 +12,18 @@ def simple_swizzle(
     sw = cute.make_swizzle(b, m, s)
     L_swizzled = cute.make_composed_layout(sw, 0, L)
     L_tiled = cute.tile_to_shape(L_swizzled, S_trg, order=(0, 1))
+    print("L_swizzled:")
+    print(L_swizzled)
+    print("--------------------------")
+    print("L_tiled:")
     print(L_tiled)
+    print("--------------------------")
+    L_tiled = cute.tile_to_shape(L_swizzled, S_trg, order=(1, 0))
+    print(L_tiled)
+    cute.print_layout(L_tiled)
     M, N = cute.size(L_tiled, mode=[0]), cute.size(L_tiled, mode=[1])
+    print(M)
+    print(N)
     return (
         M,
         N,
